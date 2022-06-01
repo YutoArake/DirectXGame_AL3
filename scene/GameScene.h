@@ -10,6 +10,14 @@
 #include "ViewProjection.h"
 #include "DebugCamera.h"
 #include "Player.h"
+#include "AxisIndicator.h"
+#include "TextureManager.h"
+#include "PrimitiveDrawer.h"
+#include <cassert>
+#include <math.h>
+
+//円周率π
+const float PI = 3.141592f;
 
 /// <summary>
 /// ゲームシーン
@@ -43,10 +51,10 @@ class GameScene {
 	void Draw();
 
   private: // メンバ変数
-	DirectXCommon* dxCommon_ = nullptr;
-	Input* input_ = nullptr;
 	Audio* audio_ = nullptr;
+	DirectXCommon* dxCommon_ = nullptr;
 	DebugText* debugText_ = nullptr;
+	Input* input_ = nullptr;
 
 	///テクスチャハンドル
 	uint32_t textureHandle_ = 0;

@@ -1,12 +1,4 @@
 ﻿#include "GameScene.h"
-#include "AxisIndicator.h"
-#include "TextureManager.h"
-#include "PrimitiveDrawer.h"
-#include <cassert>
-#include <math.h>
-
-//円周率π
-const float PI = 3.141592f;
 
 //プロトタイプ宣言ここから
 Matrix4 MatrixCalculation(WorldTransform worldTransform_, Matrix4 matScale);
