@@ -1,14 +1,16 @@
 ﻿#pragma once
-#include "Audio.h"
 #include "DirectXCommon.h"
-#include "DebugText.h"
 #include "Input.h"
+#include "Audio.h"
+#include "DebugText.h"
 #include "Model.h"
-#include "SafeDelete.h"
-#include "Sprite.h"
 #include "ViewProjection.h"
 #include "WorldTransform.h"
 #include "DebugCamera.h"
+#include "Sprite.h"
+#include "SafeDelete.h"
+#include "MathMyFunc.h"
+using namespace MathMyFunc;
 
 /// <summary>
 /// ゲームシーン
