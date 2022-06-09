@@ -1,8 +1,7 @@
 ﻿#include "GameScene.h"
-#include "AxisIndicator.h"
 #include "TextureManager.h"
+#include "AxisIndicator.h"
 #include <cassert>
-#include <math.h>
 
 GameScene::GameScene() {}
 
@@ -47,45 +46,45 @@ void GameScene::Initialize() {
 #pragma endregion
 
 #pragma region 回転
-	//X, Y, Z軸周りの回転角を設定
+	// X, Y, Z軸周りの回転角を設定
 	worldTransform_.rotation_ = {RadianTransform(45.0f), RadianTransform(45.0f), 0.0f};
 
 	//合成用回転行列を宣言
-	 Matrix4 matRot;
+	Matrix4 matRot;
 
 	//各軸用回転行列を宣言
-	 Matrix4 matRotX, matRotY, matRotZ;
+	Matrix4 matRotX, matRotY, matRotZ;
 
-	 // X, Y, Z軸回転行列の各要素を設定する
-	 GenerateRotateXMatrix(worldTransform_, matRotX);
-	 GenerateRotateYMatrix(worldTransform_, matRotY);
-	 GenerateRotateZMatrix(worldTransform_, matRotZ);
-	
+	// X, Y, Z軸回転行列の各要素を設定する
+	GenerateRotateXMatrix(worldTransform_, matRotX);
+	GenerateRotateYMatrix(worldTransform_, matRotY);
+	GenerateRotateZMatrix(worldTransform_, matRotZ);
+
 	//各軸の回転行列を合成
-	 matRot = MatrixCalculation(MatrixCalculation(matRotZ, matRotX), matRotY);
+	matRot = MatrixCalculation(MatrixCalculation(matRotZ, matRotX), matRotY);
 
 #pragma endregion
 
 #pragma region 平行移動
-	//X, Y, Z軸周りの平行移動を設定
-	 worldTransform_.translation_ = {10.0f, 10.0f, 10.0f};
+	// X, Y, Z軸周りの平行移動を設定
+	worldTransform_.translation_ = {10.0f, 10.0f, 10.0f};
 	//平行移動行列を宣言
-	 Matrix4 matTrans;
+	Matrix4 matTrans;
 
 	//移動量を行列に設定する
 	GenerateTransformMatrix(worldTransform_, matTrans);
 
 #pragma endregion
-	 //単位行列を代入
-	 GenerateIdentityMatrix(worldTransform_.matWorld_);
+	//単位行列を代入
+	GenerateIdentityMatrix(worldTransform_.matWorld_);
 
-	 //行列の合成(scale * rot * transの順番)
-	 worldTransform_.matWorld_ = MatrixCalculation(worldTransform_.matWorld_, matScale);
-	 worldTransform_.matWorld_ = MatrixCalculation(worldTransform_.matWorld_, matRot);
-	 worldTransform_.matWorld_ = MatrixCalculation(worldTransform_.matWorld_, matTrans);
-	 
+	//行列の合成(scale * rot * transの順番)
+	worldTransform_.matWorld_ = MatrixCalculation(worldTransform_.matWorld_, matScale);
+	worldTransform_.matWorld_ = MatrixCalculation(worldTransform_.matWorld_, matRot);
+	worldTransform_.matWorld_ = MatrixCalculation(worldTransform_.matWorld_, matTrans);
+
 	//行列の転送
-	 worldTransform_.TransferMatrix();
+	worldTransform_.TransferMatrix();
 
 #pragma endregion
 
@@ -126,14 +125,14 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	model_->Draw(worldTransform_, debugCamera_->GetViewProjection(), textureHandle_);
-
+	
 	/// 線の立方体描画
-
+	
 	/// </summary>
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
-
+	
 #pragma endregion
 
 #pragma region 前景スプライト描画
