@@ -8,6 +8,12 @@ float MathMyFunc::RadianTransform(float angle) {
 	return rad;
 }
 
+float MathMyFunc::DegreeTransform(float angle) {
+	float degree;
+	degree = angle * 180 / PI;
+	return degree;
+}
+
 //’PˆÊs—ñ‚ğ‘ã“ü‚·‚é
 void MathMyFunc::GenerateIdentityMatrix(Matrix4& mat) {
 	mat = {

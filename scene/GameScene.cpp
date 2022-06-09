@@ -105,10 +105,22 @@ void GameScene::Initialize() {
 	viewProjection_.eye = {0.0f, 0.0f, -50.0f};
 
 	//カメラ注視点座標を設定
-	viewProjection_.target = {10.0f, 0.0f, 0.0f};
+	viewProjection_.target = {0.0f, 0.0f, 0.0f};
 
 	//カメラ上方向ベクトルを設定(右上45度指定)
-	viewProjection_.up = {cosf(PI / 4.0f), sinf(PI / 4.0f), 0.0f};
+	viewProjection_.up = {1.0f, 0.0f, 0.0f};
+
+	//カメラ垂直方向視野角を設定
+	viewProjection_.fovAngleY = RadianTransform(45.0f);
+
+	//アスペクト比を設定
+	viewProjection_.aspectRatio = 1.0f;
+
+	//ニアクリップ距離を設定
+	viewProjection_.nearZ = 52.0f;
+	
+	//ファークリップ距離を設定
+	viewProjection_.farZ = 53.0f;
 
 	//ビュープロジェクションの初期化
 	viewProjection_.Initialize();
@@ -198,7 +210,47 @@ void GameScene::Update() {
 		//デバック用表示
 		debugText_->SetPos(50.0f, 90.0f);
 		debugText_->Printf(
-		  "target:(%f,%f,%f)", viewProjection_.up.x, viewProjection_.up.y, viewProjection_.up.z);
+		  "up:(%f,%f,%f)", viewProjection_.up.x, viewProjection_.up.y, viewProjection_.up.z);
+	}
+
+	//Fov変更処理
+	{
+		//上キーで視野角が広がる
+		if (input_->PushKey(DIK_UP)) {
+			viewProjection_.fovAngleY += 0.02f;
+			//πを超えないようにする
+			viewProjection_.fovAngleY = min(max(viewProjection_.fovAngleY, 0.01f), PI);
+			//下キーで視野角が狭まる
+		} else if (input_->PushKey(DIK_DOWN)) {
+			viewProjection_.fovAngleY -= 0.02f;
+			//0.01を下回らないようにする
+			viewProjection_.fovAngleY = min(max(viewProjection_.fovAngleY, 0.01f), PI);
+		}
+
+		//行列の再計算
+		viewProjection_.UpdateMatrix();
+
+		//デバック用表示
+		debugText_->SetPos(50.0f, 110.0f);
+		debugText_->Printf("fovAngleY(Degree):%f", DegreeTransform(viewProjection_.fovAngleY));
+	}
+
+	//クリップ距離変更処理
+	{
+		//SHIFT,CTRLでニアクリップ距離を増減
+		if (input_->PushKey(DIK_LSHIFT)) {
+			viewProjection_.nearZ += 0.2f;
+			//下キーで視野角が狭まる
+		} else if (input_->PushKey(DIK_LCONTROL)) {
+			viewProjection_.nearZ -= 0.2f;
+		}
+
+		//行列の再計算
+		viewProjection_.UpdateMatrix();
+
+		//デバック用表示
+		debugText_->SetPos(50.0f, 130.0f);
+		debugText_->Printf("nearZ:%f", viewProjection_.nearZ);
 	}
 
 	//デバッグカメラの更新
