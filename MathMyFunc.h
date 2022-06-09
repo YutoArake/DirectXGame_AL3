@@ -14,7 +14,7 @@ namespace MathMyFunc {
 	void GenerateRotateYMatrix(WorldTransform worldTransform, Matrix4& matRotate);
 	void GenerateRotateZMatrix(WorldTransform worldTransform, Matrix4& matRotate);
 	void GenerateTransformMatrix(WorldTransform worldTransform, Matrix4& matTrans);
-	Matrix4 MatrixCalculation(Matrix4 matRot1, Matrix4 matRot2);
+	Matrix4 MatrixCalculation(Matrix4 mat1, Matrix4 mat2);
 	//プロトタイプ宣言ここまで
 }
 

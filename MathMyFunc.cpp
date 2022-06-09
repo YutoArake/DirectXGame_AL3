@@ -68,20 +68,20 @@ void MathMyFunc::GenerateTransformMatrix(WorldTransform worldTransform, Matrix4&
 }
 
 //行列の計算(matRot1が元になる値)
-Matrix4 MathMyFunc::MatrixCalculation(Matrix4 matRot1, Matrix4 matRot2) {
+Matrix4 MathMyFunc::MatrixCalculation(Matrix4 mat1, Matrix4 mat2) {
 	//値が変わらないように退避させとく
-	Matrix4 holdMat = matRot1;
+	Matrix4 holdMat = mat1;
 
 	for (int i = 0; i < 4; i++) {
-		matRot1.m[0][i] = holdMat.m[0][0] * matRot2.m[0][i] + holdMat.m[0][1] * matRot2.m[1][i] +
-		                  holdMat.m[0][2] * matRot2.m[2][i] + holdMat.m[0][3] * matRot2.m[3][i];
-		matRot1.m[1][i] = holdMat.m[1][0] * matRot2.m[0][i] + holdMat.m[1][1] * matRot2.m[1][i] +
-		                  holdMat.m[1][2] * matRot2.m[2][i] + holdMat.m[1][3] * matRot2.m[3][i];
-		matRot1.m[2][i] = holdMat.m[2][0] * matRot2.m[0][i] + holdMat.m[2][1] * matRot2.m[1][i] +
-		                  holdMat.m[2][2] * matRot2.m[2][i] + holdMat.m[2][3] * matRot2.m[3][i];
-		matRot1.m[3][i] = holdMat.m[3][0] * matRot2.m[0][i] + holdMat.m[3][1] * matRot2.m[1][i] +
-		                  holdMat.m[3][2] * matRot2.m[2][i] + holdMat.m[3][3] * matRot2.m[3][i];
+		mat1.m[0][i] = holdMat.m[0][0] * mat2.m[0][i] + holdMat.m[0][1] * mat2.m[1][i] +
+		                  holdMat.m[0][2] * mat2.m[2][i] + holdMat.m[0][3] * mat2.m[3][i];
+		mat1.m[1][i] = holdMat.m[1][0] * mat2.m[0][i] + holdMat.m[1][1] * mat2.m[1][i] +
+		                  holdMat.m[1][2] * mat2.m[2][i] + holdMat.m[1][3] * mat2.m[3][i];
+		mat1.m[2][i] = holdMat.m[2][0] * mat2.m[0][i] + holdMat.m[2][1] * mat2.m[1][i] +
+		                  holdMat.m[2][2] * mat2.m[2][i] + holdMat.m[2][3] * mat2.m[3][i];
+		mat1.m[3][i] = holdMat.m[3][0] * mat2.m[0][i] + holdMat.m[3][1] * mat2.m[1][i] +
+		                  holdMat.m[3][2] * mat2.m[2][i] + holdMat.m[3][3] * mat2.m[3][i];
 	}
 
-	return matRot1;
+	return mat1;
 }
