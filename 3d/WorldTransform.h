@@ -4,6 +4,8 @@
 #include "Matrix4.h"
 #include <d3d12.h>
 #include <wrl.h>
+#include "MathMyFunc.h"
+using namespace MathMyFunc;
 
 // 定数バッファ用データ構造体
 struct ConstBufferDataWorldTransform {
@@ -45,4 +47,8 @@ struct WorldTransform {
 	/// 行列を転送する
 	/// </summary>
 	void TransferMatrix();
+	/// <summary>
+	/// 更新
+	/// </summary>
+	void UpdateWorldTransform(WorldTransform &worldTransform, AffinMatrix mat);
 };

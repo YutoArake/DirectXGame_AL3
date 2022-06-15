@@ -16,68 +16,64 @@ float MathMyFunc::DegreeTransform(float angle) {
 
 //単位行列を代入する
 void MathMyFunc::GenerateIdentityMatrix(Matrix4& mat) {
-	mat = {
-		1.0f, 0.0f, 0.0f, 0.0f,
-		0.0f, 1.0f, 0.0f, 0.0f,
-		0.0f, 0.0f, 1.0f, 0.0f,
-		0.0f, 0.0f, 0.0f, 1.0f
-	};
+	mat = {1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+	       0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f};
 }
 
-void MathMyFunc::GenerateScaleMatrix(WorldTransform worldTransform, Matrix4& matScale) {
+void MathMyFunc::GenerateScaleMatrix(Vector3 scale, Matrix4& matScale) {
 	//単位行列を代入する
 	GenerateIdentityMatrix(matScale);
 
 	//スケーリング倍率を行列に設定する
-	matScale.m[0][0] = worldTransform.scale_.x;
-	matScale.m[1][1] = worldTransform.scale_.y;
-	matScale.m[2][2] = worldTransform.scale_.z;
+	matScale.m[0][0] = scale.x;
+	matScale.m[1][1] = scale.y;
+	matScale.m[2][2] = scale.z;
 }
 
-void MathMyFunc::GenerateRotateXMatrix(WorldTransform worldTransform, Matrix4& matRotate) {
+void MathMyFunc::GenerateRotateXMatrix(Vector3 rotation, Matrix4& matRotation) {
 	//単位行列を代入する
-	GenerateIdentityMatrix(matRotate);
+	GenerateIdentityMatrix(matRotation);
 
 	// X軸回転行列の各要素を設定する
-	matRotate.m[1][1] = cos(worldTransform.rotation_.x);
-	matRotate.m[1][2] = sin(worldTransform.rotation_.x);
-	matRotate.m[2][1] = -sin(worldTransform.rotation_.x);
-	matRotate.m[2][2] = cos(worldTransform.rotation_.x);
+	matRotation.m[1][1] = cos(rotation.x);
+	matRotation.m[1][2] = sin(rotation.x);
+	matRotation.m[2][1] = -sin(rotation.x);
+	matRotation.m[2][2] = cos(rotation.x);
 }
 
-void MathMyFunc::GenerateRotateYMatrix(WorldTransform worldTransform, Matrix4& matRotate) {
+void MathMyFunc::GenerateRotateYMatrix(Vector3 rotation, Matrix4& matRotation) {
 	//単位行列を代入する
-	GenerateIdentityMatrix(matRotate);
+	GenerateIdentityMatrix(matRotation);
 
 	// Y軸回転行列の各要素を設定する
-	matRotate.m[0][0] = cos(worldTransform.rotation_.y);
-	matRotate.m[0][2] = -sin(worldTransform.rotation_.y);
-	matRotate.m[2][0] = sin(worldTransform.rotation_.y);
-	matRotate.m[2][2] = cos(worldTransform.rotation_.y);
+	matRotation.m[0][0] = cos(rotation.y);
+	matRotation.m[0][2] = -sin(rotation.y);
+	matRotation.m[2][0] = sin(rotation.y);
+	matRotation.m[2][2] = cos(rotation.y);
 }
 
-void MathMyFunc::GenerateRotateZMatrix(WorldTransform worldTransform, Matrix4& matRotate) {
+void MathMyFunc::GenerateRotateZMatrix(Vector3 rotation, Matrix4& matRotation) {
 	//単位行列を代入する
-	GenerateIdentityMatrix(matRotate);
+	GenerateIdentityMatrix(matRotation);
 
 	// Z軸回転行列の各要素を設定する
-	matRotate.m[0][0] = cos(worldTransform.rotation_.z);
-	matRotate.m[0][1] = sin(worldTransform.rotation_.z);
-	matRotate.m[1][0] = -sin(worldTransform.rotation_.z);
-	matRotate.m[1][1] = cos(worldTransform.rotation_.z);
+	matRotation.m[0][0] = cos(rotation.z);
+	matRotation.m[0][1] = sin(rotation.z);
+	matRotation.m[1][0] = -sin(rotation.z);
+	matRotation.m[1][1] = cos(rotation.z);
 }
 
-void MathMyFunc::GenerateTransformMatrix(WorldTransform worldTransform, Matrix4& matTrans) {
+void MathMyFunc::GenerateTransformMatrix(Vector3 translation, Matrix4& matTrans) {
 	//単位行列を代入する
 	GenerateIdentityMatrix(matTrans);
 
 	//移動量を行列に設定する
-	matTrans.m[3][0] = worldTransform.translation_.x;
-	matTrans.m[3][1] = worldTransform.translation_.y;
-	matTrans.m[3][2] = worldTransform.translation_.z;
+	matTrans.m[3][0] = translation.x;
+	matTrans.m[3][1] = translation.y;
+	matTrans.m[3][2] = translation.z;
 }
 
-//行列の計算(matRot1が元になる値)
+//行列の計算(mat1が元になる値)
 Matrix4 MathMyFunc::MatrixCalculation(Matrix4 mat1, Matrix4 mat2) {
 	//値が変わらないように退避させとく
 	Matrix4 holdMat = mat1;
