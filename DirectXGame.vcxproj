@@ -98,9 +98,9 @@
     <ClCompile Include="base\TextureManager.cpp" />
     <ClCompile Include="base\WinApp.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MathMyFunc.cpp" />
+    <ClCompile Include="math\MathMyFunc.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
-    <ClCompile Include="WorldTransform.cpp" />
+    <ClCompile Include="worldTransform\WorldTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2d\DebugText.h" />
@@ -124,7 +124,7 @@
     <ClInclude Include="base\TextureManager.h" />
     <ClInclude Include="base\WinApp.h" />
     <ClInclude Include="input\Input.h" />
-    <ClInclude Include="MathMyFunc.h" />
+    <ClInclude Include="math\MathMyFunc.h" />
     <ClInclude Include="math\MathUtility.h" />
     <ClInclude Include="math\Matrix4.h" />
     <ClInclude Include="math\Vector2.h" />
