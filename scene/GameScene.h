@@ -1,11 +1,6 @@
 ﻿#pragma once
 #include "DirectXCommon.h"
-#include "Input.h"
 #include "Audio.h"
-#include "DebugText.h"
-#include "Model.h"
-#include "ViewProjection.h"
-#include "WorldTransform.h"
 #include "DebugCamera.h"
 #include "Sprite.h"
 #include "SafeDelete.h"

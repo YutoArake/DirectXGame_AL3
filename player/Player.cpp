@@ -18,14 +18,28 @@ void Player::Initialize(Model* model, uint32_t textureHandle) {
 
 void Player::Update() {
 
+	//プレイヤーの旋回処理
+	Rotate();
 	//プレイヤーの移動処理
 	Move();
+	//プレイヤーの攻撃処理
+	Attack();
+
+	//弾更新
+	if (bullet_) {
+		bullet_->Update();
+	}
 }
 
 void Player::Draw(ViewProjection viewProjection) {
 
 	// 3Dモデルを描画
 	model_->Draw(worldTransform_, viewProjection, textureHandle_);
+
+	//弾描画
+	if (bullet_) {
+		bullet_->Draw(viewProjection);
+	}
 }
 
 void Player::Move() {
@@ -64,8 +78,32 @@ void Player::Move() {
 	worldTransform_.UpdateWorldTransform(worldTransform_, mat);
 
 	//デバック用表示
-	debugText_->SetPos(50.0f, 50.0f);
+	debugText_->SetPos(50.0f, 70.0f);
 	debugText_->Printf(
-	  "Root:(%f,%f,%f)", worldTransform_.translation_.x, worldTransform_.translation_.y,
+	  "Player:(%f,%f,%f)", worldTransform_.translation_.x, worldTransform_.translation_.y,
 	  worldTransform_.translation_.z);
+}
+
+void Player::Rotate() {
+	//キャラクターの回転処理
+	//押した方向で移動ベクトルを変更
+	if (input_->PushKey(DIK_U)) {
+		//胸パーツのY軸周りの角度を減少
+		worldTransform_.rotation_ -= {0.0f, PI / 180, 0.0f};
+	} else if (input_->PushKey(DIK_I)) {
+		//胸パーツのY軸周りの角度を減少
+		worldTransform_.rotation_ += {0.0f, PI / 180, 0.0f};
+	}
+}
+
+void Player::Attack() {
+
+	if (input_->TriggerKey(DIK_A)) {
+		//弾を生成し、初期化
+		PlayerBullet* newBullet = new PlayerBullet();
+		newBullet->Initialize(model_, worldTransform_.translation_);
+
+		//弾を登録する
+		bullet_ = newBullet;
+	}
 }

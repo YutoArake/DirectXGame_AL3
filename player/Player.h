@@ -1,13 +1,8 @@
 #pragma once
-#include "Model.h"
-#include "WorldTransform.h"
 #include "ViewProjection.h"
 #include "Input.h"
 #include "DebugText.h"
-#include "MathMyFunc.h"
-using namespace MathMyFunc;
-
-#include <cassert>
+#include "player/PlayerBullet.h"
 
 /// <summary>
 /// 自キャラ
@@ -34,6 +29,16 @@ class Player {
 	/// </summary>
 	void Move();
 
+	/// <summary>
+	/// 旋回処理
+	/// </summary>
+	void Rotate();
+
+	/// <summary>
+	/// 攻撃
+	/// </summary>
+	void Attack();
+
   private:
 	//ワールド変換データ
 	WorldTransform worldTransform_;
@@ -50,4 +55,6 @@ class Player {
 	//行列
 	AffinMatrix mat;
 
+	//弾
+	PlayerBullet* bullet_ = nullptr;
 };

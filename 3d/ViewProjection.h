@@ -3,6 +3,10 @@
 #include "MathUtility.h"
 #include <d3d12.h>
 #include <wrl.h>
+#include "Input.h"
+#include "DebugText.h"
+#include "MathMyFunc.h"
+using namespace MathMyFunc;
 
 // 定数バッファ用データ構造体
 struct ConstBufferDataViewProjection {
@@ -65,4 +69,12 @@ struct ViewProjection {
 	/// 行列を転送する
 	/// </summary>
 	void TransferMatrix();
+	/// <summary>
+	/// viewProjectionの各種設定初期化
+	/// </summary>
+	void SetViewProjection();
+	/// <summary>
+	/// viewProjectionの各種移動処理
+	/// </summary>
+	void UpdateViewProjention(Input* input_, DebugText* debugText_, float viewAngle);
 };
