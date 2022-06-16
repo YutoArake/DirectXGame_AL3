@@ -1,9 +1,6 @@
 #pragma once
 #include "Model.h"
 #include "WorldTransform.h"
-#include "Vector3.h"
-#include "MathMyFunc.h"
-using namespace MathMyFunc;
 
 #include <cassert>
 
