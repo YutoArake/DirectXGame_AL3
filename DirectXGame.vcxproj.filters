@@ -52,6 +52,15 @@
     <Filter Include="ソース ファイル\worldTransfrom">
       <UniqueIdentifier>{3914a1c5-9f4a-4b20-a03c-cc9df7dc3f8f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\player">
+      <UniqueIdentifier>{1f41c8ee-7eb8-415f-a742-d965dde74577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\player">
+      <UniqueIdentifier>{78fe0a35-384f-4b58-bdc9-9de5c08e9d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\viewProjection">
+      <UniqueIdentifier>{e9da56ba-a42d-4658-b766-a859f86663cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -74,6 +83,12 @@
     </ClCompile>
     <ClCompile Include="worldTransform\WorldTransform.cpp">
       <Filter>ソース ファイル\worldTransfrom</Filter>
+    </ClCompile>
+    <ClCompile Include="player\Player.cpp">
+      <Filter>ソース ファイル\player</Filter>
+    </ClCompile>
+    <ClCompile Include="viewProjection\ViewProjection.cpp">
+      <Filter>ソース ファイル\viewProjection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="math\MathMyFunc.h">
       <Filter>ヘッダー ファイル\math</Filter>
+    </ClInclude>
+    <ClInclude Include="player\Player.h">
+      <Filter>ヘッダー ファイル\player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@
 #include "DebugCamera.h"
 #include "Sprite.h"
 #include "SafeDelete.h"
+#include "player/Player.h"
 
 /// <summary>
 /// ゲームシーン
@@ -57,6 +58,9 @@ class GameScene {
 	};
 
   private: // メンバ変数
+	/// <summary>
+	/// ゲームシーン用
+	/// </summary>
 	DirectXCommon* dxCommon_ = nullptr;
 	Input* input_ = nullptr;
 	Audio* audio_ = nullptr;
@@ -68,8 +72,9 @@ class GameScene {
 	///3Dモデル
 	Model* model_ = nullptr;
 
-	///ワールドトランスフォーム
-	WorldTransform worldTransforms_[kNumPartId];
+	///自キャラ
+	Player* player_ = nullptr;
+
 	/// ビュープロジェクション
 	ViewProjection viewProjection_;
 
@@ -79,10 +84,6 @@ class GameScene {
 	//カメラ上方向の角度
 	float viewAngle = 0.0f;
 
-	//行列計算用の変数
-	AffinMatrix mat[kNumPartId];
-
-	/// <summary>
-	/// ゲームシーン用
-	/// </summary>
+	//デバッグカメラ有効
+	bool isDebugCameraActive = false;
 };
