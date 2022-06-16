@@ -3,6 +3,8 @@
 #include "Input.h"
 #include "DebugText.h"
 #include "player/PlayerBullet.h"
+#include <memory>
+#include <list>
 
 /// <summary>
 /// Ž©ƒLƒƒƒ‰
@@ -56,5 +58,5 @@ class Player {
 	AffinMatrix mat;
 
 	//’e
-	PlayerBullet* bullet_ = nullptr;
+	std::list<std::unique_ptr<PlayerBullet>> bullets_;
 };
