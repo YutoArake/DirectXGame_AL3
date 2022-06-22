@@ -30,6 +30,7 @@ void GenerateRotateYMatrix(Vector3 rotation, Matrix4& matRotation);
 void GenerateRotateZMatrix(Vector3 rotation, Matrix4& matRotation);
 void GenerateTransformMatrix(Vector3 translation, Matrix4& matTrans);
 Matrix4 MatrixCalculation(Matrix4 mat1, Matrix4 mat2);
+Vector3 MatrixCalculation(Vector3 vector, Matrix4 mat);
 //プロトタイプ宣言ここまで
 
 } // namespace MathMyFunc
