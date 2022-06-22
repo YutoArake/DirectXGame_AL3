@@ -6,10 +6,8 @@
 GameScene::GameScene() {}
 
 GameScene::~GameScene() {
-	delete model_;
 
-	//自キャラの解放
-	delete player_;
+	delete model_;
 
 	// delete debugCamera_;
 }
@@ -41,11 +39,13 @@ void GameScene::Initialize() {
 	// 3Dモデルの生成
 	model_ = Model::Create();
 
-	//自キャラの生成
-	player_ = new Player();
-
 	//自キャラの初期化
+	player_ = std::make_unique<Player>();
 	player_->Initialize(model_, textureHandle_);
+
+	//敵キャラの初期化
+	enemy_ = std::make_unique<Enemy>();
+	enemy_->Initialize(model_);
 
 	//viewProjectionの各種設定初期化
 	viewProjection_.SetViewProjection();
@@ -62,6 +62,11 @@ void GameScene::Initialize() {
 void GameScene::Update() {
 	//自キャラの更新
 	player_->Update();
+
+	//敵キャラの更新
+	if (enemy_ != nullptr) {
+		enemy_->Update();
+	}
 
 	// viewProjectionの各種移動処理
 	viewProjection_.UpdateViewProjention(input_, debugText_, viewAngle);
@@ -112,7 +117,12 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 
+	//プレイヤーの描画
 	player_->Draw(viewProjection_);
+	//敵の描画
+	if (enemy_ != nullptr) {
+		enemy_->Draw(viewProjection_);
+	}
 
 	//範囲forで全てのワールドトランスフォームを順に処理する
 

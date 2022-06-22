@@ -1,20 +1,19 @@
 #pragma once
-#include "ViewProjection.h"
-#include "Input.h"
+#include "Model.h"
+#include "WorldTransform.h"
 #include "DebugText.h"
-#include "player/PlayerBullet.h"
-#include <memory>
-#include <list>
+
+#include <cassert>
 
 /// <summary>
-/// 自キャラ
+/// 敵
 /// </summary>
-class Player {
+class Enemy {
   public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize(Model* model, uint32_t textureHandle);
+	void Initialize(Model* model);
 
 	/// <summary>
 	/// 更新
@@ -24,22 +23,12 @@ class Player {
 	/// <summary>
 	/// 描画
 	/// </summary>
-	void Draw(ViewProjection viewProjection);
+	void Draw(const ViewProjection& viewProjection);
 
 	/// <summary>
 	/// 移動処理
 	/// </summary>
 	void Move();
-
-	/// <summary>
-	/// 旋回処理
-	/// </summary>
-	void Rotate();
-
-	/// <summary>
-	/// 攻撃
-	/// </summary>
-	void Attack();
 
   private:
 	//ワールド変換データ
@@ -49,14 +38,12 @@ class Player {
 	//テクスチャハンドル
 	uint32_t textureHandle_ = 0;
 
-	//インプット
-	Input* input_ = nullptr;
 	//デバックテキスト
 	DebugText* debugText_ = nullptr;
 
 	//行列
 	AffinMatrix mat;
 
-	//弾
-	std::list<std::unique_ptr<PlayerBullet>> bullets_;
+	//速度
+	Vector3 velocity_;
 };

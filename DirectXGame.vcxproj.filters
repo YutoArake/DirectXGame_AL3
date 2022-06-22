@@ -61,6 +61,12 @@
     <Filter Include="ソース ファイル\viewProjection">
       <UniqueIdentifier>{e9da56ba-a42d-4658-b766-a859f86663cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\enemy">
+      <UniqueIdentifier>{9b7e696c-5bc3-47f4-b70f-7051763efb0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\enemy">
+      <UniqueIdentifier>{72451648-f4d9-4b02-9ee1-9ed4ac7ca45f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -78,20 +84,23 @@
     <ClCompile Include="scene\GameScene.cpp">
       <Filter>ソース ファイル\scene</Filter>
     </ClCompile>
-    <ClCompile Include="math\MathMyFunc.cpp">
+    <ClCompile Include="selfMade\player\Player.cpp">
+      <Filter>ソース ファイル\player</Filter>
+    </ClCompile>
+    <ClCompile Include="selfMade\player\PlayerBullet.cpp">
+      <Filter>ソース ファイル\player</Filter>
+    </ClCompile>
+    <ClCompile Include="selfMade\enemy\Enemy.cpp">
+      <Filter>ソース ファイル\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="selfMade\math\MathMyFunc.cpp">
       <Filter>ソース ファイル\math</Filter>
     </ClCompile>
-    <ClCompile Include="worldTransform\WorldTransform.cpp">
-      <Filter>ソース ファイル\worldTransfrom</Filter>
-    </ClCompile>
-    <ClCompile Include="player\Player.cpp">
-      <Filter>ソース ファイル\player</Filter>
-    </ClCompile>
-    <ClCompile Include="viewProjection\ViewProjection.cpp">
+    <ClCompile Include="selfMade\viewProjection\ViewProjection.cpp">
       <Filter>ソース ファイル\viewProjection</Filter>
     </ClCompile>
-    <ClCompile Include="player\PlayerBullet.cpp">
-      <Filter>ソース ファイル\player</Filter>
+    <ClCompile Include="selfMade\worldTransform\WorldTransform.cpp">
+      <Filter>ソース ファイル\worldTransfrom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,14 +185,17 @@
     <ClInclude Include="3d\PrimitiveDrawer.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="math\MathMyFunc.h">
+    <ClInclude Include="selfMade\player\Player.h">
+      <Filter>ヘッダー ファイル\player</Filter>
+    </ClInclude>
+    <ClInclude Include="selfMade\player\PlayerBullet.h">
+      <Filter>ヘッダー ファイル\player</Filter>
+    </ClInclude>
+    <ClInclude Include="selfMade\math\MathMyFunc.h">
       <Filter>ヘッダー ファイル\math</Filter>
     </ClInclude>
-    <ClInclude Include="player\Player.h">
-      <Filter>ヘッダー ファイル\player</Filter>
-    </ClInclude>
-    <ClInclude Include="player\PlayerBullet.h">
-      <Filter>ヘッダー ファイル\player</Filter>
+    <ClInclude Include="selfMade\enemy\Enemy.h">
+      <Filter>ヘッダー ファイル\enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

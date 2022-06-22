@@ -98,12 +98,13 @@
     <ClCompile Include="base\TextureManager.cpp" />
     <ClCompile Include="base\WinApp.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="math\MathMyFunc.cpp" />
-    <ClCompile Include="player\Player.cpp" />
-    <ClCompile Include="player\PlayerBullet.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
-    <ClCompile Include="viewProjection\ViewProjection.cpp" />
-    <ClCompile Include="worldTransform\WorldTransform.cpp" />
+    <ClCompile Include="selfMade\enemy\Enemy.cpp" />
+    <ClCompile Include="selfMade\math\MathMyFunc.cpp" />
+    <ClCompile Include="selfMade\player\Player.cpp" />
+    <ClCompile Include="selfMade\player\PlayerBullet.cpp" />
+    <ClCompile Include="selfMade\viewProjection\ViewProjection.cpp" />
+    <ClCompile Include="selfMade\worldTransform\WorldTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2d\DebugText.h" />
@@ -127,15 +128,16 @@
     <ClInclude Include="base\TextureManager.h" />
     <ClInclude Include="base\WinApp.h" />
     <ClInclude Include="input\Input.h" />
-    <ClInclude Include="math\MathMyFunc.h" />
     <ClInclude Include="math\MathUtility.h" />
     <ClInclude Include="math\Matrix4.h" />
     <ClInclude Include="math\Vector2.h" />
     <ClInclude Include="math\Vector3.h" />
     <ClInclude Include="math\Vector4.h" />
-    <ClInclude Include="player\Player.h" />
-    <ClInclude Include="player\PlayerBullet.h" />
     <ClInclude Include="scene\GameScene.h" />
+    <ClInclude Include="selfMade\enemy\Enemy.h" />
+    <ClInclude Include="selfMade\math\MathMyFunc.h" />
+    <ClInclude Include="selfMade\player\Player.h" />
+    <ClInclude Include="selfMade\player\PlayerBullet.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shaders\Obj.hlsli" />

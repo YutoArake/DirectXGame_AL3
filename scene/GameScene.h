@@ -4,7 +4,9 @@
 #include "DebugCamera.h"
 #include "Sprite.h"
 #include "SafeDelete.h"
-#include "player/Player.h"
+#include "selfMade/player/Player.h"
+#include "selfMade/enemy/Enemy.h"
+#include <memory>
 
 /// <summary>
 /// ゲームシーン
@@ -68,7 +70,10 @@ class GameScene {
 	Model* model_ = nullptr;
 
 	///自キャラ
-	Player* player_ = nullptr;
+	std::unique_ptr<Player> player_;
+
+	///敵キャラ
+	std::unique_ptr<Enemy> enemy_;
 
 	/// ビュープロジェクション
 	ViewProjection viewProjection_;

@@ -5,7 +5,7 @@
 #include <wrl.h>
 #include "Input.h"
 #include "DebugText.h"
-#include "MathMyFunc.h"
+#include "selfMade/math/MathMyFunc.h"
 using namespace MathMyFunc;
 
 // 定数バッファ用データ構造体

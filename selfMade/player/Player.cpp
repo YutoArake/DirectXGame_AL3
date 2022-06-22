@@ -80,9 +80,9 @@ void Player::Move() {
 	worldTransform_.UpdateWorldTransform(worldTransform_, mat);
 
 	//デバック用表示
-	debugText_->SetPos(50.0f, 70.0f);
+	debugText_->SetPos(50.0f, 50.0f);
 	debugText_->Printf(
-	  "Player:(%f,%f,%f)", worldTransform_.translation_.x, worldTransform_.translation_.y,
+	  "Player Pos:(%f,%f,%f)", worldTransform_.translation_.x, worldTransform_.translation_.y,
 	  worldTransform_.translation_.z);
 }
 
@@ -92,10 +92,21 @@ void Player::Rotate() {
 	if (input_->PushKey(DIK_U)) {
 		//胸パーツのY軸周りの角度を減少
 		worldTransform_.rotation_ -= {0.0f, PI / 180, 0.0f};
+		if (worldTransform_.rotation_.y <= PI * (-2)) {
+			worldTransform_.rotation_.y = 0.0f;
+		}
 	} else if (input_->PushKey(DIK_I)) {
 		//胸パーツのY軸周りの角度を減少
 		worldTransform_.rotation_ += {0.0f, PI / 180, 0.0f};
+		if (worldTransform_.rotation_.y >= PI * 2) {
+			worldTransform_.rotation_.y = 0.0f;
+		}
 	}
+
+	//デバック用表示
+	debugText_->SetPos(50.0f, 70.0f);
+	debugText_->Printf(
+	  "Player Rot:(%f)", worldTransform_.rotation_.y);
 }
 
 void Player::Attack() {
