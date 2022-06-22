@@ -26,9 +26,19 @@ class Enemy {
 	void Draw(const ViewProjection& viewProjection);
 
 	/// <summary>
-	/// 移動処理
+	/// 行動処理
 	/// </summary>
 	void Move();
+
+	void Approach();
+
+	void Leave();
+
+	//行動フェーズ
+	enum class Phase {
+		Approach,		//接近する
+		Leave,			//離脱する
+	};
 
   private:
 	//ワールド変換データ
@@ -46,4 +56,9 @@ class Enemy {
 
 	//速度
 	Vector3 velocity_;
+	Vector3 approachVelocity_;
+	Vector3 leaveVelocity_;
+
+	//フェーズ
+	Phase phase_ = Phase::Approach;
 };
